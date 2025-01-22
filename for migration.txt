@@ -1,0 +1,13 @@
+
+for migration in vs 
+
+Add-Migration InitialCreate -Context ApplicationDbContext -Project Infrastructure -StartupProject API -o Data/Migrations
+
+
+
+Update-Database -Context ApplicationDbContext -Project Infrastructure -StartupProject API 
+
+
+
+ 
+Remove-Migration -Force -Project Infrastructure -StartupProject API
