@@ -1,0 +1,59 @@
+<carousel [isAnimated]="true">
+    <slide>
+        <img src="assets/images/hero1.jpg" alt="slide" style="display: block; width: 100%;">
+    </slide>
+    <slide>
+        <img src="assets/images/hero2.jpg" alt="slide" style="display: block; width: 100%;">
+    </slide>
+    <slide>
+        <img src="assets/images/hero3.jpg" alt="slide" style="display: block; width: 100%;">
+    </slide>
+</carousel>
+
+<section class="featured">
+    <div class="d-flex justify-content-center pt-4">
+        <h1>Welcome to Junior full_stack developer task1</h1>
+    </div>
+
+
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Products from api using .Net core </h2>
+            <button class="btn btn-primary" [routerLink]="['/create-product']">Create Product</button>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of products">
+                        <td>{{product.id}}</td>
+                        <td>{{product.title}}</td>
+                        <td>{{product.description}}</td>
+                        <td>
+                            <!-- Removed Details button -->
+                            <!-- <button class="btn btn-info btn-sm me-2"> -->
+                            <!--     Details -->
+                            <!-- </button> -->
+                            <button class="btn btn-warning btn-sm me-2" [routerLink]="['/edit-product', product.id]">
+                                Edit
+                            </button>
+                            <button class="btn btn-danger btn-sm" (click)="deleteProduct(product.id)">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</section>

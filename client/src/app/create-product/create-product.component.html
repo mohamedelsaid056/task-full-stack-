@@ -1,0 +1,41 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Create New Product</h2>
+        <button class="btn btn-secondary" [routerLink]="['/']">Back to List</button>
+      </div>
+
+      <form (ngSubmit)="onSubmit()" [formGroup]="productForm">
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" class="form-control" id="title" formControlName="title"
+            [ngClass]="{'is-invalid': submitted && f['title'].errors}">
+          <div *ngIf="submitted && f['title'].errors" class="invalid-feedback">
+            <div *ngIf="f['title'].errors['required']">Title is required</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea class="form-control" id="description" rows="3" formControlName="description"
+            [ngClass]="{'is-invalid': submitted && f['description'].errors}">
+                    </textarea>
+          <div *ngIf="submitted && f['description'].errors" class="invalid-feedback">
+            <div *ngIf="f['description'].errors['required']">Description is required</div>
+          </div>
+        </div>
+
+        <div class="d-flex gap-2">
+          <button type="submit" class="btn btn-primary" [disabled]="loading">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+            {{ loading ? 'Creating...' : 'Create Product' }}
+          </button>
+          <button type="button" class="btn btn-secondary" [routerLink]="['/']" [disabled]="loading">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
